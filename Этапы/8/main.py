@@ -53,10 +53,10 @@ for file in os.listdir(dataset):
     img_path = os.path.join(dataset, file)
     xml_path = os.path.join(dataset, file.replace(".jpg", ".xml"))
 
-    gt_boxes = read_xml(xml_path)
+    gt_boxes = [b for b in read_xml(xml_path) if b[0] in classes]
 
     result = model(img_path, conf=0.3)[0]
-    result.show()
+    # result.show()
 
     pred_boxes = []
 

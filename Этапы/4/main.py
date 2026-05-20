@@ -1,6 +1,4 @@
 from ultralytics import YOLO
-import cv2
-import numpy as np
 
 model = YOLO("yolov8n.pt")
 
@@ -28,7 +26,7 @@ target_id = [k for k, v in model.names.items() if v == target_class][0]
 
 ###### 2 
 
-target_names = {"person"}
+target_names = "person"
 target_ids = [cls_id for cls_id, name in model.names.items() if name in target_names]
 
 results = model(image_name, classes=target_ids)
